@@ -1,0 +1,220 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #07020b;
+  font-family: "PT Serif", serif;
+}
+#root {
+  background-color: #07020b;
+  border-bottom: 1px solid #d3d3d3;
+  min-height: 1vh; /* Adjust this as needed */
+  display: block;
+}
+
+.navbar-container {
+  min-height: 100%;
+  background-color: #0e0416;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 1px;
+}
+.topbar {
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  background-color: #0e0416;
+}
+.topbar a {
+  color: #d3d3d3;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+.topbar a:hover {
+  font-size: 1.1em;
+  color: #c79bec;
+}
+
+.title-container {
+  display: block;
+  min-height: 3vh;
+  padding: 3px;
+}
+.page-title {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #c79bec;
+  padding: 2px;
+  border: 1px;
+  margin: auto;
+}
+
+#main-page {
+  display: block;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+  height: 80vh;
+  width: 90vw;
+  background-color: #0e0416;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 10px 20px 10px; /* Top, right, bottom, left */
+}
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+}
+.grid-item {
+  width: 100%;
+  height: 100%;
+  background-color: #140620;
+}
+.grid-item-404 {
+  width: 100%;
+  height: 100%;
+  background-color: #140620;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d3d3d3;
+  font-size: 50px;
+}
+.brazil-style {
+  width: 50%;
+  height: 100%;
+  background-color: #140620;
+  grid-column: span 2;  /* Span 2 columns */
+  align-self: center;  /* Center it vertically */
+  justify-self: center;  /* Center it horizontally */
+}
+
+
+/* .legend-container {
+  position: fixed;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 1px 10px;
+  width: 90vw;
+  height: 3vh;
+  margin: auto;
+  background-color: #0e0416;
+  padding: 1px;
+  border: 1px;
+  justify-content: center;
+}
+.legend-item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #140620;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 0.9em;
+} */
+
+.legend-container {
+  position: fixed;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  display: flex;              /* Change from grid to flex */
+  justify-content: center;    /* New line - centers items horizontally */
+  width: 90vw;
+  height: 3vh;
+  margin: auto;
+  background-color: #0e0416;
+  padding: 1px;
+  border: 1px;
+}
+
+.legend-item {
+  flex-grow: 0;               /* New line - prevent items from growing to fill space */
+  flex-shrink: 0;             /* New line - prevent items from shrinking to fit */
+  flex-basis: calc(90vw / 3); /* New line - set base size to one third of container width */
+  height: 100%;
+  background-color: #140620;
+  margin: 0 5px;              /* Adjust margin as needed to add some space between items */
+  font-size: 0.9em;
+}
+
+.legend-item-404 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #140620;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #d3d3d3;
+  font-size: 0.9em;
+}
+
+.text-container {
+  display: block;
+  width: 60vw;
+  color: #d3d3d3;
+  margin: auto;
+  padding: 4px;
+  border: 1px solid white;
+  background-color: #0e0416;
+}
+
+
+.text-container h1 {
+  /* background-color: red;
+  padding: 2px;
+  margin: auto; */
+  text-align: center;
+}
+
+.region-title {
+  /* background-color: green; */
+  font-size: 24px;
+  font-weight: 700;
+  color:#c79bec;
+}
+.region-title:hover {
+  font-size: 25px;
+}
+.data-source-link {
+  color: #d3d3d3
+}
+.data-source-link:hover {
+  font-size: 17px
+}
+
+.axis-label {
+  font-size: 10px;
+  color: #ff758c;
+}
+
+.grid-line {
+  color: #ff758c;
+}
+
+.graph-title {
+  font-size: 1em;
+  font-weight: bold;
+  fill: #ff758c;
+}
+
+.line-dashed {
+  stroke: #d3d3d3;
+  stroke-dasharray: 15 5;
+  stroke-width: 3;
+}
