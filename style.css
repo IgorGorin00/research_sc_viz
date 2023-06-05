@@ -9,7 +9,7 @@ body {
 #root {
   background-color: #07020b;
   border-bottom: 1px solid #d3d3d3;
-  min-height: 1vh; /* Adjust this as needed */
+  min-height: 1vh; 
   display: block;
 }
 
@@ -66,7 +66,7 @@ body {
   background-color: #0e0416;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px 10px 20px 10px; /* Top, right, bottom, left */
+  padding: 10px 10px 20px 10px;
 }
 @media (max-width: 600px) {
   .grid-container {
@@ -93,9 +93,9 @@ body {
   width: 50%;
   height: 100%;
   background-color: #140620;
-  grid-column: span 2;  /* Span 2 columns */
-  align-self: center;  /* Center it vertically */
-  justify-self: center;  /* Center it horizontally */
+  grid-column: span 2;  
+  align-self: center;  
+  justify-self: center;  
 }
 
 
@@ -131,8 +131,8 @@ body {
   bottom: 3%;
   left: 0;
   right: 0;
-  display: flex;              /* Change from grid to flex */
-  justify-content: center;    /* New line - centers items horizontally */
+  display: flex;              
+  justify-content: center;    
   width: 90vw;
   height: 3vh;
   margin: auto;
@@ -142,12 +142,12 @@ body {
 }
 
 .legend-item {
-  flex-grow: 0;               /* New line - prevent items from growing to fill space */
-  flex-shrink: 0;             /* New line - prevent items from shrinking to fit */
-  flex-basis: calc(90vw / 3); /* New line - set base size to one third of container width */
+  flex-grow: 0;              
+  flex-shrink: 0;             
+  flex-basis: calc(90vw / 3);  
   height: 100%;
   background-color: #140620;
-  margin: 0 5px;              /* Adjust margin as needed to add some space between items */
+  margin: 0 5px;              
   font-size: 0.9em;
 }
 
@@ -176,14 +176,11 @@ body {
 
 
 .text-container h1 {
-  /* background-color: red;
-  padding: 2px;
-  margin: auto; */
   text-align: center;
 }
 
 .region-title {
-  /* background-color: green; */
+  
   font-size: 24px;
   font-weight: 700;
   color:#c79bec;
@@ -195,7 +192,7 @@ body {
   color: #d3d3d3
 }
 .data-source-link:hover {
-  font-size: 17px
+  color: #c79bec;
 }
 
 .axis-label {
