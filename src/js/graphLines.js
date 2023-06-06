@@ -234,16 +234,16 @@ export function getBar(
   //   .attr("fill", "#290c41")
   //   .attr("width", rectWidth)
   //   .attr("height", rectHeight);
-  selection
-    .selectAll("rect")
-    .on("mouseover", function (event) {
-      selection
-        .append("rect")
-        .attr("x", (d) => xScale(d.region))
-        .attr("y", (d) => yScale(d.value))
-        .attr("width", 100)
-        .attr("height", 20)
-        .attr("fill", "white");
-    })
-    .on("mouseout", function () {});
+  // selection
+  //   .selectAll("rect")
+  //   .on("mouseover", function (event) {
+  //     selection
+  //       .append("rect")
+  //       .attr("x", (d) => xScale(d.region))
+  //       .attr("y", (d) => yScale(d.value))
+  //       .attr("width", 100)
+  //       .attr("height", 20)
+  //       .attr("fill", "white");
+  //   })
+  //   .on("mouseout", function () {});
 }
