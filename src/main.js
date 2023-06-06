@@ -3,7 +3,6 @@ import { renderLines, renderLegend, renderBar } from "/js/render";
 
 export function main(path) {
   const pathParts = path.split("/");
-  console.log(pathParts)
   let regionName = pathParts[pathParts.length - 1].replace("_", " ");
 
   const slugificationBullshit = {
@@ -37,12 +36,10 @@ export function main(path) {
     .then((data) => {
       if (regionName !== "placebo") {
         const treatmentYear = data["treated"][regionName]["treatment_year"];
-        console.log(treatmentYear)
         const placebo = false;
         renderLines(countryName, regionName, data, treatmentYear);
         renderLegend(placebo);
       } else {
-        //[...document.getElementsByClassName("legend-container")].map(n => n && n.remove())
         const placebo = true
         const containter = document.querySelector(".legend-container");
         containter.lastElementChild.remove();

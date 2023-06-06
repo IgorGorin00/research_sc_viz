@@ -45,7 +45,6 @@ export function getDataForBarplot(data, countryName) {
     const placeboGroup = new Array();
     Object.keys(data).forEach((synthGroup) => {
       Object.keys(data[synthGroup]).forEach((rName) => {
-        console.log(rName, varName)
         const value = data[synthGroup][rName][varName]["rel"];
         if (value > maxYValue) {
           maxYValue = value;

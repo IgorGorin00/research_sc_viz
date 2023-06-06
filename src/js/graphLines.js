@@ -178,21 +178,9 @@ export function getLine(
             .attr("cy", yScale(hoverValue))
             .attr("r", "6px")
             .style("opacity", 1);
-          // toolTipRect
-          //   .attr("x", xScale(hoverYear) - rectWidth / 2)
-          //   .attr("y", yScale(hoverValue) / 2);
-          toolTipText1
-            // .attr("x", xScale(hoverYear) - rectWidth / 2 + rectWidth * 0.05)
-            // .attr("y", yScale(hoverValue) / 2 + rectHeight * 0.3)
-            .text(`Year: ${hoverYear}`);
-          toolTipText2
-            // .attr("x", xScale(hoverYear) - rectWidth / 2 + rectWidth * 0.05)
-            // .attr("y", yScale(hoverValue) / 2 + rectHeight * 0.6)
-            .text(`Observed: ${Math.floor(yValuesObserved[idx])}`);
-          toolTipText3
-            // .attr("x", xScale(hoverYear) - rectWidth / 2 + rectWidth * 0.05)
-            // .attr("y", yScale(hoverValue) / 2 + rectHeight * 0.9)
-            .text(`Synthetic: ${Math.floor(yValuesSynthetic[idx])}`);
+          toolTipText1.text(`Year: ${hoverYear}`);
+          toolTipText2.text(`Observed: ${Math.floor(yValuesObserved[idx])}`);
+          toolTipText3.text(`Synthetic: ${Math.floor(yValuesSynthetic[idx])}`);
           tooltip.style("opacity", 1);
         }
       })
@@ -205,8 +193,16 @@ export function getLine(
   }
 }
 
-export function getBar(selection, data, placeboGroup, xScale, yScale, transitionTime, colorTreatment, colorPlacebo) {
-  console.log(placeboGroup)
+export function getBar(
+  selection,
+  data,
+  placeboGroup,
+  xScale,
+  yScale,
+  transitionTime,
+  colorTreatment,
+  colorPlacebo
+) {
   selection
     .selectAll("mybar")
     .data(data)
@@ -216,7 +212,7 @@ export function getBar(selection, data, placeboGroup, xScale, yScale, transition
     .attr("y", yScale(0))
     .attr("width", xScale.bandwidth())
     .attr("height", 0)
-    .attr("fill", "pink");
+    .attr("fill", "#140620");
 
   selection
     .selectAll("rect")
@@ -224,6 +220,30 @@ export function getBar(selection, data, placeboGroup, xScale, yScale, transition
     .duration(transitionTime)
     .attr("y", (d) => yScale(d.value))
     .attr("height", (d) => yScale(0) - yScale(d.value))
-    .attr("fill", (d) => placeboGroup.includes(d.region) ? colorPlacebo : colorTreatment)
-    //.delay((d, i) => i * 100);
+    .attr("fill", (d) =>
+      placeboGroup.includes(d.region) ? colorPlacebo : colorTreatment
+    )
+    .delay((d, i) => i * 100);
+
+  // const tooltip = selection.append("g");
+  // const toolTipRect = tooltip
+  //   .append("rect")
+  //   .attr("rx", 5)
+  //   .attr("x", margin.left)
+  //   .attr("y", margin.top)
+  //   .attr("fill", "#290c41")
+  //   .attr("width", rectWidth)
+  //   .attr("height", rectHeight);
+  selection
+    .selectAll("rect")
+    .on("mouseover", function (event) {
+      selection
+        .append("rect")
+        .attr("x", (d) => xScale(d.region))
+        .attr("y", (d) => yScale(d.value))
+        .attr("width", 100)
+        .attr("height", 20)
+        .attr("fill", "white");
+    })
+    .on("mouseout", function () {});
 }

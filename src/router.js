@@ -1,10 +1,10 @@
 import { main } from "./main";
-//import {updateRegionNamesOnPage} from '/menu'
 import {
   regionsByCountry,
   updateRegionNamesOnPage,
   updateRegions,
 } from "/js/contentUtils";
+
 function route(event) {
   event = event || window.event;
   event.preventDefault();
@@ -32,9 +32,7 @@ const routes = {
   "/russia/kaluga_region": "/pages/graphs.html",
   "/russia/astrakhan_region": "/pages/graphs.html",
   "/russia/tula_region": "/pages/graphs.html",
-  //"/russia/moscow_region": "/pages/graphs.html",
   "/russia/placebo": "/pages/graphs.html",
-
 
   "/brazil": "/pages/brazil.html",
   "/brazil/ceara": "/pages/graphs.html",
@@ -53,20 +51,19 @@ const pagesWithThreeGraphs = [
   "/brazil/acre",
   "/brazil/pernambuco",
   "/brazil/minas_gerais",
-  "/brazil/placebo"
-]
-
+  "/brazil/placebo",
+];
 
 function initializePage(route) {
   const path = window.location.pathname;
-
+  const countryPages = [
+    "/pages/india.html",
+    "/pages/russia.html",
+    "/pages/brazil.html",
+  ];
   if (route === "/pages/graphs.html") {
     main(path);
-  } else if (
-    ["/pages/india.html", "/pages/russia.html", "/pages/brazil.html"].includes(
-      route
-    )
-  ) {
+  } else if (countryPages.includes(route)) {
     const countryName = route.slice(7, -5);
     updateRegionNamesOnPage(countryName, regionsByCountry);
   }
@@ -93,8 +90,8 @@ handleLocation();
 
 window.addEventListener("DOMContentLoaded", (event) => {
   const path = window.location.pathname;
-  // by this i want to ensure that second part of menu 
-  // with regions will be wisible not only on click, 
+  // by this i want to ensure that second part of menu
+  // with regions will be wisible not only on click,
   // but on page reload as well
   const parts = path.split("/");
   for (let countryName of Object.keys(regionsByCountry)) {
@@ -105,13 +102,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // this part adds navigation
   const topMenuElements = document.querySelector("#main-nav").childNodes;
   for (let i = 0; i < topMenuElements.length; i++) {
-    
     if (topMenuElements[i].nodeName === "A") {
-      topMenuElements[i].addEventListener("click", (event) => {       
+      topMenuElements[i].addEventListener("click", (event) => {
         event.preventDefault();
         route();
-        const path = window.location.pathname
-        updateRegions(path.length > 1 ? path.slice(1) : path, regionsByCountry);        
+        const path = window.location.pathname;
+        updateRegions(path.length > 1 ? path.slice(1) : path, regionsByCountry);
       });
     }
   }
