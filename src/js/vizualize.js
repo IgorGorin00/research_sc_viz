@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { addBackgroundGrid, getXAxis, getYAxis, getTitle } from "./graphLayout";
-import { getTreatmentLine, getLine, getBar } from "./graphLines";
+import { getTreatmentLine, getLine, getBar } from "./graphContent";
 
 
 export function vizualize(
@@ -121,5 +121,5 @@ export function vizualizeBar(
   );
 
   selection.call(getTitle, title, transitionTime2, width, margin);
-  selection.call(getBar, data, placeboGroup, xScale, yScale, transitionTime1, colorTreatment, colorPlacebo);
+  selection.call(getBar, data, placeboGroup, xScale, yScale, transitionTime1, colorTreatment, colorPlacebo, margin);
 }

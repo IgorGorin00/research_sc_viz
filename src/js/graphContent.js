@@ -201,9 +201,11 @@ export function getBar(
   yScale,
   transitionTime,
   colorTreatment,
-  colorPlacebo
+  colorPlacebo,
+  margin
 ) {
   selection
+    .append("g")
     .selectAll("mybar")
     .data(data)
     .enter()
@@ -212,10 +214,11 @@ export function getBar(
     .attr("y", yScale(0))
     .attr("width", xScale.bandwidth())
     .attr("height", 0)
-    .attr("fill", "#140620");
+    .attr("fill", "#140620")
+    .attr("class", "data-bar");
 
   selection
-    .selectAll("rect")
+    .selectAll(".data-bar")
     .transition()
     .duration(transitionTime)
     .attr("y", (d) => yScale(d.value))
@@ -225,25 +228,43 @@ export function getBar(
     )
     .delay((d, i) => i * 100);
 
-  // const tooltip = selection.append("g");
-  // const toolTipRect = tooltip
-  //   .append("rect")
-  //   .attr("rx", 5)
-  //   .attr("x", margin.left)
-  //   .attr("y", margin.top)
-  //   .attr("fill", "#290c41")
-  //   .attr("width", rectWidth)
-  //   .attr("height", rectHeight);
-  // selection
-  //   .selectAll("rect")
-  //   .on("mouseover", function (event) {
-  //     selection
-  //       .append("rect")
-  //       .attr("x", (d) => xScale(d.region))
-  //       .attr("y", (d) => yScale(d.value))
-  //       .attr("width", 100)
-  //       .attr("height", 20)
-  //       .attr("fill", "white");
-  //   })
-  //   .on("mouseout", function () {});
+  const rectWidth = xScale.bandwidth(); //* 1.1;
+  const rectHeight = selection.node().getBoundingClientRect().width * 0.05;
+  const tooltip = selection.append("g");
+  const toolTipRect = tooltip
+    .append("rect")
+    .attr("rx", 5)
+    .attr("x", margin.left)
+    .attr("y", margin.top)
+    .attr("fill", "#290c41")
+    .attr("width", rectWidth)
+    .attr("height", rectHeight);
+  tooltip.style("opacity", 0);
+  const toolTipText = tooltip
+    .append("text")
+    .attr("x", rectWidth * 0.05 + margin.left)
+    .attr("y", rectHeight * 0.3 + margin.top)
+    .text("")
+    .attr("fill", "#d3d3d3")
+    .attr("font-size", rectHeight * 0.55);
+  selection
+    .selectAll(".data-bar")
+    .on("mouseover", function (event, d) {
+      let yVal = yScale(d.value) - (rectHeight + 10);
+      if (yVal < margin.top) {
+        yVal = margin.top;
+      }
+      toolTipRect        
+        .attr("x", xScale(d.region))
+        .attr("y", yVal);
+
+      toolTipText
+        .attr("x", xScale(d.region) + rectWidth * 0.1)
+        .attr("y", yVal + rectHeight * 0.5 + 5)
+        .text(d.value.toFixed(2));
+      tooltip.style("opacity", 1);
+    })
+    .on("mouseout", function () {
+      tooltip.style("opacity", 0);
+    });
 }

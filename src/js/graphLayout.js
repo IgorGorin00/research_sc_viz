@@ -72,7 +72,7 @@ export function getYAxis(
     india: (d) => d * 0.012 / 10 + "M",
     russia: (d) => d * 0.012 + "M",
     brazil: (d) => graphTitle.includes('Export') ? d / 1000000 + "M" : d * 0.2 + "M",
-    placebo: (d) => d
+    placebo: (d) => Number(d.toFixed(2))
   }
   yLabels = yLabels.slice(1);
   selection
