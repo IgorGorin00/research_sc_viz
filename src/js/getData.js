@@ -42,17 +42,20 @@ export function getDataForBarplot(data, countryName) {
   variablesPerContry[countryName].forEach((varName) => {
     const dataNew = new Array();
     let maxYValue = 0;
+    const skip = ["voronezh region", "oryol region"];
     const placeboGroup = new Array();
     Object.keys(data).forEach((synthGroup) => {
       Object.keys(data[synthGroup]).forEach((rName) => {
-        const value = data[synthGroup][rName][varName]["rel"];
-        if (value > maxYValue) {
-          maxYValue = value;
+        if (!skip.includes(rName)) {
+          const value = data[synthGroup][rName][varName]["rel"];
+          if (value > maxYValue) {
+            maxYValue = value;
+          }
+          if (synthGroup === "placebo") {
+            placeboGroup.push(rName);
+          }
+          dataNew.push({ region: rName, value: value });
         }
-        if (synthGroup === 'placebo') {
-          placeboGroup.push(rName)
-        }
-        dataNew.push({ 'region': rName, 'value': value });
       });
     });
     const obj = {
