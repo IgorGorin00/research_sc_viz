@@ -6,7 +6,7 @@ import {
 } from "/js/contentUtils";
 
 function getFullPath(relativePath) {
-    const basePath = "/research_viz_sc/"
+    const basePath = "/research_sc_viz/"
     if (!relativePath.startsWith(basePath)) {
         return (basePath + relativePath).replace("//", "/")
     }
@@ -83,7 +83,7 @@ function initializePage(route) {
 
 async function handleLocation() {
     const url = new URL(window.location.href);
-    const base = '/research_viz_sc';
+    const base = '/research_sc_viz';
     const path = url.pathname.replace(base, '') + url.search;
     const route = routes[path] || routes[404];
     const newRoute = base + route;
@@ -106,7 +106,7 @@ handleLocation();
 
 window.addEventListener("DOMContentLoaded", (event) => {
     const url = new URL(window.location.href);
-    const base = '/research_viz_sc';
+    const base = '/research_sc_viz';
     const path = url.pathname.replace(base, '') + url.search;
     // by this i want to ensure that second part of menu
     // with regions will be wisible not only on click,

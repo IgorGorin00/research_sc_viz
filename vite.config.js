@@ -18,5 +18,5 @@ export default defineConfig({
     },
   },
   publicDir: '../public',
-  base: '/research_viz_sc/',
+  base: '/research_sc_viz/',
 })

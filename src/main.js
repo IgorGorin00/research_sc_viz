@@ -32,7 +32,7 @@ export function main(path) {
         throw new Error("Invalid country name");
     }
     
-    const basePath = "/research_viz_sc";
+    const basePath = "/research_sc_viz";
     const newFileName = basePath + fileName;
     d3.json(newFileName)
         .then((data) => {

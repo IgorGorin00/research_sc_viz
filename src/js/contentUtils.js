@@ -25,7 +25,7 @@ export function updateRegionNamesOnPage(country, regionsByCountry) {
 
     stateHeadings.forEach((heading, i) => {
         const region = regionsByCountry[country][i];
-        heading.href = `/research_viz_sc/${country}/${region.toLowerCase().replace(" ", "_")}`;
+        heading.href = `/research_sc_viz/${country}/${region.toLowerCase().replace(" ", "_")}`;
     });
 }
 
