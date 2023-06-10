@@ -87,7 +87,6 @@ export function getYAxis(
         .axisLeft(yScale)
         .tickValues(yLabels)
         .tickFormat(convertCurrency[countryName])
-        //(d) => countryName === 'russia' ? d / 1000 + "M" : d / 1000 + 'M'
     )
     .selectAll('.tick text')
     .classed('axis-label', true)
