@@ -2,13 +2,13 @@ export const margin = {
     top: 35,
     right: 20,
     bottom: 20,
-    left: 50,
+    left: window.innerWidth > 600 ? 50 : 40,
   };
 export const marginPlacebo = {
     top: 35,
     right: 20,
     bottom: 50,
-    left: 50,
+    left: window.innerWidth > 600 ? 40 : 30,
   };
 export const transitionTime1 = 2000;
 export const transitionTime2 = 1000;

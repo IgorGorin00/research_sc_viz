@@ -142,27 +142,6 @@ body {
   text-align: center;
 }
 
-@media (max-width: 700px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-  }
-  .grid-item {
-    height: 350px
-  }
-  .brazil-style {
-    grid-column: span 1;  
-    width: 100%;
-  }
-  .text-container {
-    width: 92vw
-  }
-  .topbar a {
-    font-size: 0.8em; 
-    padding: 3px; 
-  }
-}
-
 .region-title {
   
   font-size: 24px;
@@ -199,3 +178,32 @@ body {
   stroke-dasharray: 15 5;
   stroke-width: 3;
 }
+
+@media (max-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .grid-item {
+        height: 350px
+    }
+    .brazil-style {
+        grid-column: span 1;  
+        width: 100%;
+    }
+    .text-container {
+        width: 92vw
+    }
+    .topbar a {
+        font-size: 0.8em; 
+        padding: 3px; 
+    }
+    .axis-label {
+        font-size: 6px;
+        color: #ff758c;
+    }
+    .legend-item {
+        font-size: 0.5em;
+    }
+}
+
