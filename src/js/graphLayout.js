@@ -121,7 +121,6 @@ export function getXAxis(
     }
     const dx = placebo ? '-1.8em' : '0'
     const dy = placebo ? '1.5em' : '1em'
-    console.log(xScale.domain().length)
     selection
         .append('g')
         .attr('class', 'x-axis')
